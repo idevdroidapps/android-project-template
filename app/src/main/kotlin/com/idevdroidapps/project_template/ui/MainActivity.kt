@@ -11,17 +11,25 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.idevdroidapps.data.repositories.PersonsRepositoryImpl
+import com.idevdroidapps.domain.usecases.PersonsUseCases
 import com.idevdroidapps.project_template.ui.theme.Project_templateTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val personsUseCases = PersonsUseCases(PersonsRepositoryImpl())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val person = personsUseCases.getAllPersons().first()
+
         setContent {
             Project_templateTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = person.name,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
