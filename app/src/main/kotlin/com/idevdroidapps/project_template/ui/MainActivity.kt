@@ -1,4 +1,4 @@
-package com.idevdroidapps.project_template
+package com.idevdroidapps.project_template.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
