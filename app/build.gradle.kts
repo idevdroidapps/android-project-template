@@ -53,6 +53,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            // Use debug signing config for release build only in demo/example projects, never in the wild
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 
